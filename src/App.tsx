@@ -12,16 +12,18 @@ import Photography from './pages/Photography'
 import Community from './pages/Community'
 import DesignStudio from './pages/DesignStudio'
 
-function App() {
-  const { theme, initializeApp } = useStore()
+function App() {\n  const { theme, initializeApp } = useStore()
 
   useEffect(() => {
     initializeApp()
   }, [])
 
+  // Determine the base path for routing
+  const basename = import.meta.env.BASE_URL
+
   return (
     <div className={theme === 'dark' ? 'dark' : ''}>
-      <Router>
+      <Router basename={basename}>
         <Routes>
           <Route element={<Layout />}>
             <Route path="/" element={<Home />} />
